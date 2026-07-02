@@ -1,0 +1,372 @@
+/* --------------------------------------------------
+   BASIC THEME COLORS
+-------------------------------------------------- */
+:root {
+  --peach: #ff9f6e;
+  --peach-dark: #ff7b3c;
+  --purple: #6a4cff;
+  --purple-dark: #5637f1;
+
+  --text-dark: #2b2b2b;
+  --text-light: #555;
+  --bg: #faf9ff;
+  --white: #ffffff;
+
+  --card-shadow: 0 4px 18px rgba(0,0,0,0.12);
+  --card-shadow-hover: 0 8px 28px rgba(0,0,0,0.20);
+  --radius: 16px;
+}
+
+/* --------------------------------------------------
+   GLOBAL RESET
+-------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  font-family: "Inter", sans-serif;
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+#root {
+  width: 960px;
+  max-width: 1500px;
+  margin: auto;
+  padding: 0 16px;
+}
+
+/* --------------------------------------------------
+   HEADER
+-------------------------------------------------- */
+header {
+  padding: 22px 0;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--peach);
+  color: var(--purple-dark);
+}
+
+/* --------------------------------------------------
+   NAVBAR (Sticky + Responsive)
+-------------------------------------------------- */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 14px;
+
+  background: linear-gradient(90deg, var(--peach), var(--purple));
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  box-shadow: var(--card-shadow);
+}
+
+nav a {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  border-radius: 10px;
+  transition: 0.25s;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* MOBILE NAV */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* --------------------------------------------------
+   MAIN LAYOUT (Left panel + profile grid)
+-------------------------------------------------- */
+.main-layout {
+  display: flex;
+  gap: 28px;
+  width: 100%;
+  margin-top: 28px;
+  align-items: flex-start;
+}
+
+/* --------------------------------------------------
+   LEFT PANEL
+-------------------------------------------------- */
+.left-panel {
+  width: 280px;
+  flex-shrink: 0;
+
+  background: var(--white);
+  padding: 26px;
+  border-radius: var(--radius);
+
+  border-left: 8px solid var(--purple);
+  box-shadow: var(--card-shadow);
+  transition: 0.3s ease;
+}
+
+.left-panel:hover {
+  transform: translateY(-6px);
+  border-left-color: var(--peach);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.left-panel h2 {
+  color: var(--purple-dark);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.left-panel p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------
+   PROFILE GRID
+-------------------------------------------------- */
+.profile-container {
+  flex: 1;
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 26px;
+}
+
+/* --------------------------------------------------
+   PROFILE CARD
+-------------------------------------------------- */
+.profile-card {
+  background: var(--white);
+  padding: 24px;
+  border-radius: var(--radius);
+
+  border-top: 7px solid var(--peach);
+  box-shadow: var(--card-shadow);
+
+  transition: 0.35s ease;
+}
+
+/* COLOR-CHANGING HOVER */
+.profile-card:hover {
+  transform: translateY(-8px);
+  border-top-color: var(--purple);
+
+  background: linear-gradient(
+    135deg,
+    rgba(106, 76, 255, 0.12),
+    rgba(255, 159, 110, 0.12)
+  );
+
+  box-shadow: var(--card-shadow-hover);
+}
+
+.profile-card h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--purple-dark);
+  margin-bottom: 10px;
+}
+
+.profile-card p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.profile-card a {
+  text-decoration: none;
+  color: var(--peach-dark);
+  font-weight: 700;
+}
+
+.profile-card a:hover {
+  color: var(--purple-dark);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------
+   RESPONSIVE FIXES
+-------------------------------------------------- */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .main-layout {
+    gap: 20px;
+  }
+}
+
+/* Stack layout on smaller screens */
+@media (max-width: 900px) {
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .left-panel {
+    width: 100%;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  header {
+    font-size: 1.5rem;
+  }
+  .profile-card {
+    padding: 18px;
+  }
+  .left-panel {
+    padding: 20px;
+  }
+}
+
+button {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 18px;
+
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid var(--purple);
+  color: var(--purple-dark);
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  border-radius: 12px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: var(--purple);
+  color: white;
+  border-color: var(--purple);
+  transform: translateY(-3px);
+}
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
+footer {
+  margin-top: 50px;
+  padding: 22px;
+
+  background: linear-gradient(90deg, var(--purple), var(--peach));
+  text-align: center;
+  color: white;
+
+  border-top: 4px solid var(--purple-dark);
+  font-weight: 700;
+}
+/* Main nav */
+.main-nav {
+  display: flex;
+  gap: 20px;
+  background: linear-gradient(90deg, #ff9f6e, #6a4cff);
+  padding: 12px 20px;
+  align-items: center;
+  font-family: sans-serif;
+  position: relative;
+}
+
+/* Nav links and dropdown button */
+.main-nav a,
+.drop-btn {
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Hover effect */
+.main-nav a:hover,
+.drop-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Dropdown wrapper */
+.dropdown {
+  position: relative;
+}
+
+/* Hide checkbox */
+.toggle-checkbox {
+  display: none;
+}
+
+/* Arrow icon */
+.arrow {
+  font-size: 0.7em;
+  transition: transform 0.25s ease;
+}
+
+/* Rotate arrow when open */
+.toggle-checkbox:checked + .drop-btn .arrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown content */
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  background: white;
+  min-width: 220px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateY(-10px);
+  opacity: 0;
+  z-index: 10;
+}
+
+/* Show dropdown when checkbox is checked */
+.toggle-checkbox:checked + .drop-btn + .dropdown-content {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Dropdown links */
+.dropdown-content a {
+  color: #333;
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+/* Hover effect on dropdown links */
+.dropdown-content a:hover {
+  background: #f2f2f2;
+}
+
