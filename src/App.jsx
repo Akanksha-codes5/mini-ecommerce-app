@@ -4,14 +4,14 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import './assets/styles.css'
-import { BrowserRouter, Routes, Route, } from 'react-router-dom'
+import { HashRouter, Routes, Route, } from 'react-router-dom'
 import PageNotFound from './PageNotFound'
 import Products from './Products'
 import Cart from './Cart'
 export default function App() {
     return (
         <>
-            <BrowserRouter>
+            <HashRouter>
                 <Routes>
                     
                     <Route path="/" element={<Products />} />
@@ -19,7 +19,7 @@ export default function App() {
                     <Route path="/cart" element={<Cart/>} />
                     <Route path='*' element={<PageNotFound />} />
                 </Routes>
-            </BrowserRouter>
+            </HashRouter>
         </>
     )
 }
