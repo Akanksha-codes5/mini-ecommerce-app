@@ -7,14 +7,19 @@ import './assets/styles.css'
 import { HashRouter, Routes, Route, } from 'react-router-dom'
 import PageNotFound from './PageNotFound'
 import Products from './Products'
+import ContactUs from './ContactUs'
+import About from './AboutUs'
 import Cart from './Cart'
+import Home from './Home'
 export default function App() {
     return (
         <>
             <HashRouter>
                 <Routes>
-                    
-                    <Route path="/" element={<Products />} />
+                    <Route path="/" element={<Home/>} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<ContactUs />} />
                     <Route path="/products" element={<Products/>} />
                     <Route path="/cart" element={<Cart/>} />
                     <Route path='*' element={<PageNotFound />} />
