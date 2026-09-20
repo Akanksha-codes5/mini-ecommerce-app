@@ -11,6 +11,10 @@ import ContactUs from './ContactUs'
 import About from './AboutUs'
 import Cart from './Cart'
 import Home from './Home'
+import ProductDetail from './ProductDetail'
+import Checkout from './Checkout'
+import OrderSuccess from './OrderSuccess'
+import OrderSummary from './OrderSummary'
 export default function App() {
     return (
         <>
@@ -19,9 +23,13 @@ export default function App() {
                     <Route path="/" element={<Home/>} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="/contact" element={<ContactUs />} />
                     <Route path="/products" element={<Products/>} />
+                    <Route path="/contact" element={<ContactUs />} />
+                    <Route path="/products/:id" element={<ProductDetail />} />
                     <Route path="/cart" element={<Cart/>} />
+                    <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/order-success" element={<OrderSuccess />} />
+                    <Route path="/order-summary" element={<OrderSummary />} />
                     <Route path='*' element={<PageNotFound />} />
                 </Routes>
             </HashRouter>

@@ -4,6 +4,11 @@ import { FcCheckmark } from "react-icons/fc";
 import CartIcon from "./CartIcon";
 import Header from "./Header";
 import Footer from "./Footer";
+import { Link, useSearchParams } from "react-router-dom";
+import { CurrencyIcon } from "./Constant";
+import "./assets/styles.css";
+import "./App.css";
+
 
 function Products() {
     const [search, setSearch] = useState("");
@@ -11,15 +16,27 @@ function Products() {
     const [cart, setCart] = useState(() => {
         const storedCart = sessionStorage.getItem("cart");
         return storedCart ? JSON.parse(storedCart) : [];
+
     })
+const [searchParams] = useSearchParams();
+
+  const category = searchParams.get("category");
+
+  console.log(category);
+
     useEffect(() => {
         fetch('https://dummyjson.com/products')
             .then((response) => response.json())
             .then((result) => {
                 console.log("result", result)
-                setData(result.products)
+                const filteredProducts = result.products.filter((product) => {
+                    return product.availabilityStatus === "In Stock"  
+
+                })
+
+                setData(category ? filteredProducts.filter((product) => product.tags.includes(category)) : filteredProducts);
             })
-    }, [])
+    }, [category]);
     const addToCart = (id, price, title, image) => {
         console.log("image", image)
         console.log("price", price)
@@ -74,6 +91,7 @@ function Products() {
 
         return productName.includes(searchText);
     });
+   
     return (
         <>
             <div className="page-container">
@@ -81,10 +99,9 @@ function Products() {
                     search={search}
                     setSearch={setSearch}
                 />
-                <h1>Product List</h1>
                 <div className="cart-info">
                     <div><CartIcon cartCount={cartCount} /></div>
-                    <div>Total Price: {totalPrice.toFixed(2)} </div>
+                    <div>Total Price:<CurrencyIcon/>{totalPrice.toFixed(0)} </div>
                 </div>
                 <div class="product-container">
                     {
@@ -92,14 +109,18 @@ function Products() {
                             const isInCart = cart.find((cartitem) => cartitem.productId === item.id);
                             return (
                                 <div class="product-card">
-                                    <img src={item.images[0]} class="product-image" />
+                                    <Link to={`/products/${item.id}`}>
+                                        <img src={item.images[0]} class="product-image" />
+                                    </Link>
 
                                     <div class="product-details">
-                                        <h3 class="product-title">{item.title}</h3>
-                                        <p class="product-description">
-                                            {item.description}
-                                        </p>
-                                        <p class="product-price"><span><MdCurrencyRupee /></span><span class="price">{item.price}</span> </p>
+                                        <h3 class="product-title">
+                                            <Link to={`/products/${item.id}`}>
+                                                {item.title}
+                                            </Link>
+                                        </h3>
+
+                                        <p class="product-price"><span class="price"><CurrencyIcon />{item.price}</span> </p>
                                         <p class="product-rating">Rating: {item.rating}</p>
                                         <p class="product-stock">Status: {item.availabilityStatus}</p>
                                         <p class="product-return">Return: {item.returnPolicy}</p>

@@ -1,6 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import "./assets/styles.css";
 function Home() {
   return (
     <div className="page-container">
@@ -16,26 +17,27 @@ function Home() {
           from one convenient online store.
         </p>
 
-      <button className="shop-btn"><Link to="/products">Shop Now</Link></button>
+      <button className="shop-btn"><Link className="nav-link" to="/products">Shop Now</Link></button>
       </section>
 
       <section className="category-section">
         <h2>Our Categories</h2>
 
         <div className="category-grid">
-          <div>💄 Beauty Products</div>
-          <div>🛋️ Furniture</div>
-          <div>🛒 Groceries</div>
-          <div>🥬 Vegetables</div>
-          <div>🍎 Fruits</div>
-          <div>🥚 Eggs</div>
-          <div>🍗 Chicken Meat</div>
-          <div>🥩 Beef Steak</div>
-          <div>🐟 Fish Steak</div>
-          <div>🍦 Ice Cream</div>
-          <div>🧃 Juice</div>
-          <div>🐶 Dog Food</div>
-          <div>🐱 Cat Food</div>
+         <Link className="nav-link" to="/products?category=beauty"><div> 💄 Beauty Products</div> </Link>
+         <Link className="nav-link" to="/products?category=fragrances"><div> 🌸 Fragrances</div></Link>
+          <Link className="nav-link" to="/products?category=furniture"><div>🛋️ Furniture</div></Link>
+          <Link className="nav-link" to="/products?category=cooking essentials"><div>🍳 Cooking Essentials</div></Link>
+          <Link className="nav-link" to="/products?category=condiments"><div>🌶️ Condiments</div></Link>
+          <Link className="nav-link" to="/products?category=vegetables"><div>🥬 Vegetables</div></Link>
+          <Link className="nav-link" to="/products?category=fruits"><div>🍎 Fruits</div></Link>
+          <Link className="nav-link" to="/products?category=dairy"><div>🥚 Eggs</div></Link>
+          <Link className="nav-link" to="/products?category=meat"><div>🍗 Meat</div></Link>
+          <Link className="nav-link" to="/products?category=seafood"><div>🐟 Seafood</div></Link>
+          <Link className="nav-link" to="/products?category=desserts"><div>🍦 Ice Cream</div></Link>
+          <Link className="nav-link" to="/products?category=beverages"><div>🧃 Juice</div></Link>
+          <Link className="nav-link" to="/products?category=dog food"><div>🐶 Dog Food</div></Link>
+          <Link className="nav-link" to="/products?category=cat food"><div>🐱 Cat Food</div></Link >
         </div>
       </section>
 

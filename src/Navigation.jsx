@@ -6,8 +6,8 @@ function Navigation() {
     <nav className="navbar">
       <NavLink to="/">🏠 Home</NavLink>
       <NavLink to="/about">ℹ️ About Us</NavLink>
-      <NavLink to="/contact">📞 Contact Us</NavLink>
       <NavLink to="/products">🛍️ Products</NavLink> 
+      <NavLink to="/contact">📞 Contact Us</NavLink>
     </nav>
   );
 }
